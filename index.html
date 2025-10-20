@@ -46,7 +46,7 @@
 
         .test-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 35px;
             margin-bottom: 40px;
         }
@@ -144,10 +144,59 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
 
-        /* 性能测试卡片 - 保持原来的深色 */
+        /* API测试卡片 - 中等粉色渐变 */
+        .api {
+            background: linear-gradient(135deg, #ffd6e8 0%, #ffb3d9 100%);
+            color: #2c3e50;
+        }
+
+        .api h2 {
+            color: #c2185b;
+            text-shadow: 1px 1px 2px rgba(194, 24, 91, 0.15);
+        }
+
+        .api .subtitle {
+            color: #d81b60;
+        }
+
+        .api p {
+            color: #424242;
+        }
+
+        .api .stat-value {
+            color: #e91e63;
+            text-shadow: 1px 1px 2px rgba(233, 30, 99, 0.2);
+        }
+
+        .api .stat-label {
+            color: #616161;
+        }
+
+        .api .test-stats {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .api .badge {
+            background: rgba(233, 30, 99, 0.2);
+            color: #c2185b;
+        }
+
+        .api .btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+        }
+
+        .api .btn:hover {
+            box-shadow: 0 6px 20px rgba(240, 147, 251, 0.5);
+        }
+
+        /* 性能测试卡片 - 放中间 */
         .performance {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            order: 2;
         }
 
         .performance h2,
@@ -182,90 +231,43 @@
             box-shadow: 0 6px 20px rgba(255,255,255,0.5);
         }
 
-        /* API测试卡片 - 浅色粉色渐变 */
-        .api {
-            background: linear-gradient(135deg, #ffeaf4 0%, #ffd6e8 100%);
-            color: #2c3e50;
-        }
-
-        .api h2 {
-            color: #c7417b;
-            text-shadow: 1px 1px 2px rgba(199, 65, 123, 0.1);
-        }
-
-        .api .subtitle {
-            color: #d66a9c;
-        }
-
-        .api p {
-            color: #5a5a5a;
-        }
-
-        .api .stat-value {
-            color: #e91e63;
-            text-shadow: 1px 1px 2px rgba(233, 30, 99, 0.15);
-        }
-
-        .api .stat-label {
-            color: #6d6d6d;
-        }
-
-        .api .test-stats {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        .api .badge {
-            background: rgba(233, 30, 99, 0.15);
-            color: #c7417b;
-        }
-
-        .api .btn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
-        }
-
-        .api .btn:hover {
-            box-shadow: 0 6px 20px rgba(240, 147, 251, 0.5);
-        }
-
-        /* Web UI测试卡片 - 浅色蓝色渐变 */
+        /* Web UI测试卡片 - 中等蓝色渐变 */
         .web {
-            background: linear-gradient(135deg, #e3f5ff 0%, #d0f0fd 100%);
+            background: linear-gradient(135deg, #b3e5fc 0%, #81d4fa 100%);
             color: #2c3e50;
+            order: 3;
         }
 
         .web h2 {
-            color: #1e88e5;
-            text-shadow: 1px 1px 2px rgba(30, 136, 229, 0.1);
+            color: #0277bd;
+            text-shadow: 1px 1px 2px rgba(2, 119, 189, 0.15);
         }
 
         .web .subtitle {
-            color: #42a5f5;
+            color: #0288d1;
         }
 
         .web p {
-            color: #5a5a5a;
+            color: #424242;
         }
 
         .web .stat-value {
             color: #0288d1;
-            text-shadow: 1px 1px 2px rgba(2, 136, 209, 0.15);
+            text-shadow: 1px 1px 2px rgba(2, 136, 209, 0.2);
         }
 
         .web .stat-label {
-            color: #6d6d6d;
+            color: #616161;
         }
 
         .web .test-stats {
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
         }
 
         .web .badge {
-            background: rgba(2, 136, 209, 0.15);
-            color: #1e88e5;
+            background: rgba(2, 136, 209, 0.2);
+            color: #0277bd;
         }
 
         .web .btn {
@@ -325,13 +327,27 @@
             }
         }
 
+        @media (max-width: 1200px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .api {
+                order: 2;
+            }
+            
+            .performance {
+                order: 1;
+            }
+            
+            .web {
+                order: 3;
+            }
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.2em;
-            }
-
-            .test-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -344,39 +360,6 @@
         </div>
 
         <div class="test-grid">
-            <!-- 性能测试报告 -->
-            <div class="test-card performance">
-                <div class="test-card-header">
-                    <div class="test-icon">⚡</div>
-                    <div>
-                        <h2>性能测试报告</h2>
-                        <div class="subtitle">Performance Testing</div>
-                    </div>
-                </div>
-                <p>基于 Apache JMeter 的完整性能测试，包含压力测试、混合场景和稳定性测试。</p>
-                <div class="test-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">26,385</div>
-                        <div class="stat-label">总请求数</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">99.99%</div>
-                        <div class="stat-label">成功率</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">61.6</div>
-                        <div class="stat-label">峰值TPS</div>
-                    </div>
-                </div>
-                <div class="badge">JMeter 5.6.3</div>
-                <div class="badge">3个测试场景</div>
-                <br><br>
-                <a href="stress_report/index.html" class="btn">📈 压力测试报告</a>
-                <a href="mixed_report/index.html" class="btn">🔥 混合场景报告</a>
-                <br><br>
-                <a href="stability_report/index.html" class="btn">⏱️ 稳定性报告</a>
-            </div>
-
             <!-- API接口测试报告 -->
             <div class="test-card api">
                 <div class="test-card-header">
@@ -405,6 +388,40 @@
                 <div class="badge">Allure报告</div>
                 <br><br>
                 <a href="api_test_report/index.html" class="btn">📋 查看详细报告</a>
+            </div>
+
+            <!-- 性能测试报告 - 放中间 -->
+            <div class="test-card performance">
+                <div class="test-card-header">
+                    <div class="test-icon">⚡</div>
+                    <div>
+                        <h2>性能测试报告</h2>
+                        <div class="subtitle">Performance Testing</div>
+                    </div>
+                </div>
+                <p>基于 Apache JMeter 的完整性能测试，包含压力测试、混合场景、稳定性测试等。</p>
+                <div class="test-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">26,385</div>
+                        <div class="stat-label">总请求数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">99.99%</div>
+                        <div class="stat-label">成功率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">61.6</div>
+                        <div class="stat-label">峰值TPS</div>
+                    </div>
+                </div>
+                <div class="badge">JMeter 5.6.3</div>
+                <div class="badge">4个测试场景</div>
+                <br><br>
+                <a href="stress_report/index.html" class="btn">📈 压力测试</a>
+                <a href="mixed_report/index.html" class="btn">🔥 混合场景</a>
+                <br><br>
+                <a href="stability_report/index.html" class="btn">⏱️ 稳定性测试</a>
+                <a href="mixed_report/index.html" class="btn">📊 综合报告</a>
             </div>
 
             <!-- Web UI测试报告 -->
