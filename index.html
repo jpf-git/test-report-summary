@@ -12,14 +12,15 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            color: #fff;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -34,343 +35,218 @@
             font-size: 3.5em;
             margin-bottom: 15px;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            font-weight: 700;
         }
 
         .header p {
-            font-size: 1.4em;
-            opacity: 0.95;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            font-weight: 500;
+            font-size: 1.3em;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
         .test-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-bottom: 40px;
         }
 
+        /* Order for desktop */
+        .test-card:nth-child(1) { order: 1; } /* API */
+        .test-card:nth-child(2) { order: 2; } /* Performance */
+        .test-card:nth-child(3) { order: 3; } /* Web UI */
+
+        @media (max-width: 768px) {
+            .test-card:nth-child(1) { order: 2; } /* API */
+            .test-card:nth-child(2) { order: 1; } /* Performance */
+            .test-card:nth-child(3) { order: 3; } /* Web UI */
+        }
+
         .test-card {
-            background: white;
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             animation: fadeInUp 0.8s ease;
         }
 
         .test-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        .test-card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .test-icon {
+        .card-icon {
             font-size: 3.5em;
-            margin-right: 20px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.8);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        .test-card h2 {
-            font-size: 1.8em;
-            color: #2c3e50;
-            margin-bottom: 8px;
+        .card-title {
+            font-size: 2em;
+            margin-bottom: 15px;
             font-weight: 700;
-            text-shadow: none;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        .test-card .subtitle {
-            color: #7f8c8d;
-            font-size: 1em;
-            font-weight: 500;
-        }
-
-        .test-card p {
-            color: #34495e;
-            line-height: 1.8;
+        .card-description {
+            font-size: 1.1em;
+            opacity: 0.9;
             margin-bottom: 25px;
-            font-size: 1.05em;
+            line-height: 1.6;
+            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.1);
         }
 
-        .test-stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 25px 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 12px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
         }
 
         .stat-item {
-            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .stat-value {
-            font-size: 2em;
+            font-size: 1.8em;
             font-weight: 800;
-            color: #667eea;
-            text-shadow: 1px 1px 2px rgba(102, 126, 234, 0.2);
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .stat-label {
-            font-size: 0.95em;
-            color: #495057;
-            margin-top: 8px;
+            font-size: 0.9em;
+            opacity: 0.8;
             font-weight: 600;
+            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.1);
         }
 
-        .btn {
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .report-button {
             display: inline-block;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
             text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
+            color: white;
             font-weight: 600;
-            font-size: 1.05em;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            margin: 5px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            min-width: 150px;
         }
 
-        .btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        .report-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        /* API测试卡片 - 浅绿色渐变 */
-        .api {
-            background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
-            color: #2c3e50;
-        }
-
-        .api h2 {
-            color: #2e7d32;
-            text-shadow: 1px 1px 2px rgba(46, 125, 50, 0.15);
-        }
-
-        .api .subtitle {
-            color: #388e3c;
-        }
-
-        .api p {
-            color: #424242;
-        }
-
-        .api .stat-value {
-            color: #4caf50;
-            text-shadow: 1px 1px 2px rgba(76, 175, 80, 0.2);
-        }
-
-        .api .stat-label {
-            color: #616161;
-        }
-
-        .api .test-stats {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-        }
-
-        .api .badge {
-            background: rgba(76, 175, 80, 0.2);
-            color: #2e7d32;
-        }
-
-        .api .btn {
-            background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+        /* Performance Test Card */
+        .performance-card {
+            background: linear-gradient(45deg, #4a148c 0%, #880e4f 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(102, 187, 106, 0.3);
+        }
+        .performance-card .card-title { color: #e0f7fa; }
+        .performance-card .card-icon { color: #e0f7fa; }
+        .performance-card .stat-value { color: #ffeb3b; }
+        .performance-card .report-button {
+            background: linear-gradient(45deg, #ab47bc 0%, #7b1fa2 100%);
+        }
+        .performance-card .report-button:hover {
+            background: linear-gradient(45deg, #7b1fa2 0%, #ab47bc 100%);
         }
 
-        .api .btn:hover {
-            box-shadow: 0 6px 20px rgba(102, 187, 106, 0.5);
+        /* API Test Card - Light Green */
+        .api-card {
+            background: linear-gradient(45deg, #c8e6c9 0%, #a5d6a7 100%);
+            color: #333;
         }
-
-        /* 性能测试卡片 - 放中间 */
-        .performance {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .api-card .card-title { color: #2e7d32; }
+        .api-card .card-icon { color: #4caf50; }
+        .api-card .stat-value { color: #4caf50; }
+        .api-card .report-button {
+            background: linear-gradient(45deg, #66bb6a 0%, #43a047 100%);
             color: white;
-            order: 2;
+        }
+        .api-card .report-button:hover {
+            background: linear-gradient(45deg, #43a047 0%, #66bb6a 100%);
         }
 
-        .performance h2,
-        .performance .subtitle,
-        .performance p {
+        /* Web UI Test Card - Medium Blue */
+        .ui-card {
+            background: linear-gradient(45deg, #b3e5fc 0%, #81d4fa 100%);
+            color: #333;
+        }
+        .ui-card .card-title { color: #0277bd; }
+        .ui-card .card-icon { color: #03a9f4; }
+        .ui-card .stat-value { color: #0288d1; }
+        .ui-card .report-button {
+            background: linear-gradient(45deg, #4fc3f7 0%, #29b6f6 100%);
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
-
-        .performance .stat-value {
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .performance .stat-label {
-            color: rgba(255,255,255,0.9);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-
-        .performance .test-stats {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-        }
-
-        .performance .btn {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
-        }
-
-        .performance .btn:hover {
-            box-shadow: 0 6px 20px rgba(255,255,255,0.5);
-        }
-
-        /* Web UI测试卡片 - 中等蓝色渐变 */
-        .web {
-            background: linear-gradient(135deg, #b3e5fc 0%, #81d4fa 100%);
-            color: #2c3e50;
-            order: 3;
-        }
-
-        .web h2 {
-            color: #0277bd;
-            text-shadow: 1px 1px 2px rgba(2, 119, 189, 0.15);
-        }
-
-        .web .subtitle {
-            color: #0288d1;
-        }
-
-        .web p {
-            color: #424242;
-        }
-
-        .web .stat-value {
-            color: #0288d1;
-            text-shadow: 1px 1px 2px rgba(2, 136, 209, 0.2);
-        }
-
-        .web .stat-label {
-            color: #616161;
-        }
-
-        .web .test-stats {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-        }
-
-        .web .badge {
-            background: rgba(2, 136, 209, 0.2);
-            color: #0277bd;
-        }
-
-        .web .btn {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
-        }
-
-        .web .btn:hover {
-            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.5);
+        .ui-card .report-button:hover {
+            background: linear-gradient(45deg, #29b6f6 0%, #4fc3f7 100%);
         }
 
         .footer {
             text-align: center;
-            color: white;
+            color: rgba(255,255,255,0.7);
             margin-top: 60px;
-            opacity: 0.9;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .footer p {
-            margin: 8px 0;
-            font-size: 1.1em;
-            font-weight: 500;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.25);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
             font-size: 0.9em;
-            margin: 5px;
-            font-weight: 600;
+            animation: fadeInUp 0.8s ease;
+            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.1);
         }
 
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .test-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .api {
-                order: 2;
-            }
-            
-            .performance {
-                order: 1;
-            }
-            
-            .web {
-                order: 3;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2em;
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🎯 抽奖系统测试报告中心</h1>
-            <p>完整的测试覆盖 | 性能 · 接口 · UI</p>
-        </div>
+        <header class="header">
+            <h1>抽奖系统测试报告中心</h1>
+            <p>全面展示性能、API接口和Web UI自动化测试结果</p>
+        </header>
 
         <div class="test-grid">
-            <!-- API接口测试报告 -->
-            <div class="test-card api">
-                <div class="test-card-header">
-                    <div class="test-icon">🔌</div>
-                    <div>
-                        <h2>API 接口测试</h2>
-                        <div class="subtitle">API Testing</div>
-                    </div>
-                </div>
-                <p>基于 Python + Pytest + Allure 的自动化接口测试，覆盖用户、活动、奖品、抽奖等核心业务。</p>
-                <div class="test-stats">
+            <!-- API 接口测试卡片 -->
+            <div class="test-card api-card">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <h2 class="card-title">API 接口测试</h2>
+                <p class="card-description">
+                    基于 Python + Pytest + Allure 的接口自动化测试报告，确保后端服务质量。
+                </p>
+                <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-value">41</div>
                         <div class="stat-label">测试用例</div>
@@ -379,31 +255,23 @@
                         <div class="stat-value">100%</div>
                         <div class="stat-label">通过率</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value">6</div>
-                        <div class="stat-label">测试模块</div>
-                    </div>
                 </div>
-                <div class="badge">Python + Pytest</div>
-                <div class="badge">Allure报告</div>
-                <br><br>
-                <a href="api_test_report/index.html" class="btn">📋 查看详细报告</a>
+                <div class="button-group">
+                    <a href="api_test_report/" class="report-button">查看报告 <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
 
-            <!-- 性能测试报告 - 放中间 -->
-            <div class="test-card performance">
-                <div class="test-card-header">
-                    <div class="test-icon">⚡</div>
-                    <div>
-                        <h2>性能测试报告</h2>
-                        <div class="subtitle">Performance Testing</div>
-                    </div>
-                </div>
-                <p>基于 Apache JMeter 的完整性能测试，包含压力测试、混合场景、稳定性测试等。</p>
-                <div class="test-stats">
+            <!-- 性能测试卡片 -->
+            <div class="test-card performance-card">
+                <div class="card-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <h2 class="card-title">性能测试</h2>
+                <p class="card-description">
+                    使用 Apache JMeter 对系统进行压力、稳定性及混合场景测试。
+                </p>
+                <div class="stats-grid">
                     <div class="stat-item">
-                        <div class="stat-value">26,385</div>
-                        <div class="stat-label">总请求数</div>
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">测试场景</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">99.99%</div>
@@ -411,55 +279,44 @@
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">61.6</div>
-                        <div class="stat-label">峰值TPS</div>
+                        <div class="stat-label">最高吞吐量</div>
                     </div>
                 </div>
-                <div class="badge">JMeter 5.6.3</div>
-                <div class="badge">4个测试场景</div>
-                <br><br>
-                <a href="stress_report/index.html" class="btn">📈 压力测试</a>
-                <a href="mixed_report/index.html" class="btn">🔥 混合场景</a>
-                <br><br>
-                <a href="stability_report/index.html" class="btn">⏱️ 稳定性测试</a>
-                <a href="mixed_report/index.html" class="btn">📊 综合报告</a>
+                <div class="button-group">
+                    <a href="stress_report/" class="report-button">📈 压力测试</a>
+                    <a href="mixed_report/" class="report-button">🔥 混合场景</a>
+                    <a href="stability_report/" class="report-button">⏱️ 稳定性测试</a>
+                    <a href="baseline_report/" class="report-button">📊 基准测试</a>
+                </div>
             </div>
 
-            <!-- Web UI测试报告 -->
-            <div class="test-card web">
-                <div class="test-card-header">
-                    <div class="test-icon">🌐</div>
-                    <div>
-                        <h2>Web UI 测试</h2>
-                        <div class="subtitle">Web UI Testing</div>
-                    </div>
-                </div>
-                <p>基于 Selenium + Java + Allure 的Web界面自动化测试，验证用户注册、登录等关键流程。</p>
-                <div class="test-stats">
+            <!-- Web UI 测试卡片 -->
+            <div class="test-card ui-card">
+                <div class="card-icon"><i class="fas fa-desktop"></i></div>
+                <h2 class="card-title">Web UI 测试</h2>
+                <p class="card-description">
+                    基于 Selenium + Java + Allure 的Web界面自动化测试报告。
+                </p>
+                <div class="stats-grid">
                     <div class="stat-item">
-                        <div class="stat-value">17</div>
+                        <div class="stat-value">29</div>
                         <div class="stat-label">测试用例</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">✓</div>
-                        <div class="stat-label">UI测试</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">30+</div>
-                        <div class="stat-label">截图记录</div>
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">通过率</div>
                     </div>
                 </div>
-                <div class="badge">Selenium WebDriver</div>
-                <div class="badge">失败截图</div>
-                <br><br>
-                <a href="web_test_report/index.html" class="btn">🖥️ 查看详细报告</a>
+                <div class="button-group">
+                    <a href="web_test_report/" class="report-button">查看报告 <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
-
-        <div class="footer">
-            <p>📅 最后更新：2025年10月20日</p>
-            <p>👨‍💻 测试工程师：JPF</p>
-            <p>🚀 在线抽奖系统 - 完整测试文档</p>
-        </div>
     </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 抽奖系统测试团队. All Rights Reserved.</p>
+        <p>报告生成工具: JMeter, Pytest, Selenium, Allure</p>
+    </footer>
 </body>
 </html>
